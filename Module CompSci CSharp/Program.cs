@@ -8,9 +8,6 @@ namespace Module_CompSci_CSharp
 {
     class Slot
     {
-        readonly int _row;
-        readonly int _col;
-
         public int Row
         {
             get;
@@ -23,8 +20,8 @@ namespace Module_CompSci_CSharp
 
         Slot(int row, int col)
         {
-            this._row = row;
-            this._col = col;
+            Row = row;
+            Col = col;
         }
     }
 
@@ -59,6 +56,7 @@ namespace Module_CompSci_CSharp
                 {
                     Console.WriteLine("Solved!");
                     PrintBoard(board);
+                    Console.ReadLine();
                     return;
                 }
 
@@ -71,6 +69,7 @@ namespace Module_CompSci_CSharp
                 }
             }
 
+            Console.ReadLine();
         }
 
         private static Slot GetEmptySlot(int[,] board)
