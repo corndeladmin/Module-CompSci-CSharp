@@ -18,14 +18,14 @@ namespace Module_CompSci_CSharp
             get;
         }
 
-        Slot(int row, int col)
+        public Slot(int row, int col)
         {
             Row = row;
             Col = col;
         }
     }
 
-    class Program
+    class Sudoku
     {
         static void Main(string[] args)
         {
@@ -49,8 +49,8 @@ namespace Module_CompSci_CSharp
 
             while (stack.Count > 0)
             {
-                int[,] board = stack.Pop();
-                Slot slot = GetEmptySlot(board);
+                var board = stack.Pop();
+                Slot slot = GetFirstEmptySlot(board);
 
                 if (slot == null)
                 {
@@ -72,7 +72,7 @@ namespace Module_CompSci_CSharp
             Console.ReadLine();
         }
 
-        private static Slot GetEmptySlot(int[,] board)
+        private static Slot GetFirstEmptySlot(int[,] board)
         {
             throw new NotImplementedException("Fill me in!");
         }
