@@ -74,7 +74,17 @@ namespace Module_CompSci_CSharp
 
         private static Slot GetFirstEmptySlot(int[,] board)
         {
-            throw new NotImplementedException("Fill me in!");
+            for (int row = 0; row < 9; row++)
+            {
+                for (int col = 0; col < 9; col++)
+                {
+                    if (board[row, col] == 0)
+                    {
+                        return new Slot(row, col);
+                    }
+                }
+            }
+            return null;
         }
 
         private static bool IsValidInSlot(int[,] board, Slot slot, int guess)
@@ -87,22 +97,51 @@ namespace Module_CompSci_CSharp
 
         private static bool IsValidInRow(int[,] board, int row, int guess)
         {
-            throw new NotImplementedException("Fill me in!");
+            for (int col = 0; col < 9; col++)
+            {
+                if (board[row, col] == guess)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private static bool IsValidInCol(int[,] board, int col, int guess)
         {
-            throw new NotImplementedException("Fill me in!");
+            for (int row = 0; row < 9; row++)
+            {
+                if (board[row, col] == guess)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private static bool IsValidInSquare(int[,] board, Slot slot, int guess)
         {
-            throw new NotImplementedException("Fill me in!");
+            int squareX = slot.Row / 3;
+            int squareY = slot.Col / 3;
+
+            for (int row = squareX * 3; row < (squareX + 1) * 3; row++)
+            {
+                for (int col = squareY * 3; col < (squareY + 1) * 3; col++)
+                {
+                    if (board[row, col] == guess)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private static int[,] UpdateBoard(int[,] board, Slot slot, int guess)
         {
-            throw new NotImplementedException("Fill me in!");
+            int[,] newBoard = board.Clone() as int[,];
+            newBoard[slot.Row, slot.Col] = guess;
+            return newBoard;
         }
 
         private static void PrintBoard(int[,] board)
